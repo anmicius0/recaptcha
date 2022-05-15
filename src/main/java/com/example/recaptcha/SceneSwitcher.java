@@ -1,6 +1,5 @@
 package com.example.recaptcha;
 import javafx.stage.Stage;
-import com.example.recaptcha.GameScene;
 import java.io.IOException;
 
 public class SceneSwitcher{

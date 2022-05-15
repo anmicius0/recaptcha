@@ -2,13 +2,8 @@ package com.example.recaptcha;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-
 import javafx.scene.control.Label;
-
 import java.io.IOException;
-
-import com.example.recaptcha.SceneSwitcher;
 
 public class HelloController {
     @FXML
@@ -21,7 +16,7 @@ public class HelloController {
         try {
 			SceneSwitcher.ChangeScene(stage);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
     }

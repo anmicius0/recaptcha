@@ -8,11 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent; 
-
-
-
 import java.io.IOException;
 import java.util.Random;
 
@@ -21,6 +18,8 @@ public class GameScene{
 	private int _score = -1;
 	private int ans = -1;
 	private Random rand = new Random();
+	private String color = "", colorAns = "";
+	
 	@FXML
 	private Button buttons[][];
 	private Label score;
@@ -53,22 +52,31 @@ public class GameScene{
         stage.setScene(scene);
     }
 
+	private void genColor() {
+		int r =  rand.nextInt(256), g =  rand.nextInt(256), b =  rand.nextInt(256),
+			range = (int)((r + g + b > 127 * 3? 64 : -64 ) / Math.log(_score + Math.E));
+    	color = "rgb(" + r + "," + g + "," + b + ");";
+		colorAns = "rgb(" + (r + range) + "," + (g + range) + "," + (b + range) + ");";
+	}
+
     public void refresh() {
+		score.setText("分數：" + ++_score + "分");
     	for(int i = 0; i < buttons.length; i++) {
         	for(int j = 0; j < buttons.length; j++) {
 	        	root.getChildren().remove(buttons[i][j]);
         	}
         }
 
-    	if(buttons.length >= 20)
+    	if(_score % 5 != 0 || buttons.length >= 20 )
     		buttons = new Button[buttons.length][buttons.length];
-    	else
+    	else {
     		buttons = new Button[buttons.length + 1][buttons.length + 1];
+		}
     	int size = 1000 / buttons.length - 5;
     	ans = rand.nextInt(buttons.length * buttons.length);
-    	String color = "rgb(128,128,128);", colorAns = "rgb(255,255,255);";
+		genColor();
 
-    	for(int i = 0; i < buttons.length; i++) {
+    	for(int i = 0; i < buttons.length; i++)
         	for(int j = 0; j < buttons.length; j++) {
         		buttons[i][j] = new Button();
         		buttons[i][j].setPrefSize(size, size);
@@ -82,11 +90,10 @@ public class GameScene{
         		buttons[i][j].setOnMouseClicked(mouseClickedHandler);
 	        	root.getChildren().add(buttons[i][j]);
         	}
-        }
-    	score.setText("分數：" + ++_score + "分");
+		System.gc();
     }
 
     public void exit() {
-
+		// Implement gameover condition.
     }
 }
