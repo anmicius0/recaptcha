@@ -27,7 +27,7 @@ public class GameScene {
     private EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
 
     public void init(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game_scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         root = (AnchorPane) scene.getRoot();
 

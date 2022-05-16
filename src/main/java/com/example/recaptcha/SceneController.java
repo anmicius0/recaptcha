@@ -15,6 +15,7 @@ public class SceneController {
 
     @FXML
     protected void onWelcomeButtonClick() throws IOException {
+        // Change scene from welcome to game
         Stage stage = (Stage) welcomeText.getScene().getWindow();
         gameScene = new GameScene();
         gameScene.init(stage);
