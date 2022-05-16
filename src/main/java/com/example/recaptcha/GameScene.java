@@ -26,8 +26,9 @@ public class GameScene {
     private AnchorPane root;
 
     public GameScene(Stage stage) throws IOException {
+        // Load game scene.
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getWidth(), stage.getHeight());
 
         // Initialize objects.
         root = (AnchorPane) scene.getRoot();
@@ -46,6 +47,7 @@ public class GameScene {
         buttons = new Button[1][1];
 
         refresh();
+        stage.setMaximized(true);
         stage.setScene(scene);
     }
 
