@@ -6,9 +6,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneController {
+public class WelcomeController {
     @FXML
-    private Label welcomeText;
+    public Label welcomeText;
 
     @FXML
     protected void onWelcomeButtonClick() throws IOException {

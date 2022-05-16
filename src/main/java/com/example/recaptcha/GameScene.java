@@ -16,8 +16,8 @@ public class GameScene {
 
     private final Random rand = new Random();
     private final EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
-    private final Label scoreLabel;
     private final AnchorPane root;
+    private Label scoreLabel;
     private int score = -1;
     private int ans = -1;
     private String color = "", colorAns = "";
