@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -15,38 +14,37 @@ import java.util.Random;
 
 public class GameScene {
 
+    private final Random rand = new Random();
     private int _score = -1;
     private int ans = -1;
-    private Random rand = new Random();
     private String color = "", colorAns = "";
 
     @FXML
-    private Button buttons[][];
+    private Button[][] buttons;
+    private EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
     private Label score;
     private AnchorPane root;
-    private EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
 
-    public void init(Stage stage) throws IOException {
+    public GameScene(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        root = (AnchorPane) scene.getRoot();
 
-        mouseClickedHandler = new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                Button b = (Button) event.getSource();
-                String id = b.getId();
-                id = id.substring(7);
-                int i_id = Integer.parseInt(id);
-                if (i_id == ans) {
-                    refresh();
-                } else {
-                    exit();
-                }
+        // Initialize objects.
+        root = (AnchorPane) scene.getRoot();
+        mouseClickedHandler = event -> {
+            Button b = (Button) event.getSource();
+            String id = b.getId();
+            id = id.substring(7);
+            int i_id = Integer.parseInt(id);
+            if (i_id == ans) {
+                refresh();
+            } else {
+                exit();
             }
         };
         score = (Label) root.getChildren().get(0);
-
         buttons = new Button[1][1];
+
         refresh();
         stage.setScene(scene);
     }
@@ -59,7 +57,7 @@ public class GameScene {
     }
 
     public void refresh() {
-        score.setText("分數：" + ++_score + "分");
+        score.setText("Score：" + ++_score);
         for (int i = 0; i < buttons.length; i++) {
             for (int j = 0; j < buttons.length; j++) {
                 root.getChildren().remove(buttons[i][j]);
