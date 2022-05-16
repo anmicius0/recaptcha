@@ -17,7 +17,7 @@ public class GameScene {
     private final Random rand = new Random();
     private final EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
     private final AnchorPane root;
-    private Label scoreLabel;
+    private final Label scoreLabel;
     private int score = -1;
     private int ans = -1;
     private String color = "", colorAns = "";
@@ -40,6 +40,7 @@ public class GameScene {
                 dead();
             }
         };
+        // TODO: I think scoreLabel could be simplified.
         scoreLabel = (Label) root.getChildren().get(0);
         buttons = new Button[1][1];
 
@@ -66,7 +67,7 @@ public class GameScene {
         }
 
         // Generate new board.
-        if (score % 5 != 0 || buttons.length >= 20)
+        if (buttons.length >= 22)
             buttons = new Button[buttons.length][buttons.length];
         else {
             buttons = new Button[buttons.length + 1][buttons.length + 1];
