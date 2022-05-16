@@ -3,13 +3,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" snapToPixel="false" xmlns="http://javafx.com/javafx/16">
+
+<AnchorPane snapToPixel="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label id="Score" fx:id="welcomeText" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0"
-               prefWidth="200.0" text="分數：0分" textAlignment="CENTER" AnchorPane.leftAnchor="50.0"
-               AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
+        <Label id="scoreLabel" fx:id="scoreLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="200.0" text="分數：0分" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
             <font>
-                <Font name="Microsoft JhengHei" size="26.0"/>
+                <Font name="Microsoft JhengHei" size="26.0" />
             </font>
         </Label>
     </children>

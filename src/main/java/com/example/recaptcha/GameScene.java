@@ -15,15 +15,14 @@ import java.util.Random;
 public class GameScene {
 
     private final Random rand = new Random();
-    private int _score = -1;
+    private final EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
+    private final Label scoreLabel;
+    private final AnchorPane root;
+    private int score = -1;
     private int ans = -1;
     private String color = "", colorAns = "";
-
     @FXML
     private Button[][] buttons;
-    private EventHandler<javafx.scene.input.MouseEvent> mouseClickedHandler;
-    private Label score;
-    private AnchorPane root;
 
     public GameScene(Stage stage) throws IOException {
         // Load game scene.
@@ -34,47 +33,48 @@ public class GameScene {
         root = (AnchorPane) scene.getRoot();
         mouseClickedHandler = event -> {
             Button b = (Button) event.getSource();
-            String id = b.getId();
-            id = id.substring(7);
-            int i_id = Integer.parseInt(id);
-            if (i_id == ans) {
-                refresh();
+            int id = Integer.parseInt(b.getId().substring(7));
+            if (id == ans) {
+                nextLevel();
             } else {
-                exit();
+                dead();
             }
         };
-        score = (Label) root.getChildren().get(0);
+        scoreLabel = (Label) root.getChildren().get(0);
         buttons = new Button[1][1];
 
-        refresh();
-        stage.setMaximized(true);
+        nextLevel();
         stage.setScene(scene);
     }
 
     private void genColor() {
         int r = rand.nextInt(256), g = rand.nextInt(256), b = rand.nextInt(256),
-                range = (int) ((r + g + b > 127 * 3 ? 64 : -64) / Math.log(_score + Math.E));
+                range = (int) ((r + g + b > 127 * 3 ? 64 : -64) / Math.log(score + Math.E));
         color = "rgb(" + r + "," + g + "," + b + ");";
         colorAns = "rgb(" + (r + range) + "," + (g + range) + "," + (b + range) + ");";
     }
 
-    public void refresh() {
-        score.setText("Score：" + ++_score);
-        for (int i = 0; i < buttons.length; i++) {
+    public void nextLevel() {
+        // Update score.
+        scoreLabel.setText("Score：%d".formatted(++score));
+
+        // Clean up previous board.
+        for (Button[] button : buttons) {
             for (int j = 0; j < buttons.length; j++) {
-                root.getChildren().remove(buttons[i][j]);
+                root.getChildren().remove(button[j]);
             }
         }
 
-        if (_score % 5 != 0 || buttons.length >= 20)
+        // Generate new board.
+        if (score % 5 != 0 || buttons.length >= 20)
             buttons = new Button[buttons.length][buttons.length];
         else {
             buttons = new Button[buttons.length + 1][buttons.length + 1];
         }
-        int size = 1000 / buttons.length - 5;
         ans = rand.nextInt(buttons.length * buttons.length);
         genColor();
 
+        int size = 1000 / buttons.length - 5;
         for (int i = 0; i < buttons.length; i++)
             for (int j = 0; j < buttons.length; j++) {
                 buttons[i][j] = new Button();
@@ -82,17 +82,22 @@ public class GameScene {
                 buttons[i][j].setLayoutX((size + 5) * j + 52.5);
                 buttons[i][j].setLayoutY((size + 5) * i + 112.5);
                 buttons[i][j].setText(null);
-                buttons[i][j].setStyle("-fx-background-color:" + color + ";");
-                if (i * buttons.length + j == ans)
-                    buttons[i][j].setStyle("-fx-background-color:" + colorAns + ";");
                 buttons[i][j].setId("button_" + (i * buttons.length + j));
                 buttons[i][j].setOnMouseClicked(mouseClickedHandler);
+
+                // Set color
+                if (i * buttons.length + j == ans) {
+                    buttons[i][j].setStyle("-fx-background-color:%s;".formatted(colorAns));
+                } else {
+                    buttons[i][j].setStyle("-fx-background-color:%s;".formatted(color));
+                }
+
                 root.getChildren().add(buttons[i][j]);
             }
         System.gc();
     }
 
-    public void exit() {
-        // Implement gameover condition.
+    public void dead() {
+        // TODO: Implement game over condition.
     }
 }
