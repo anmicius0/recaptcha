@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WelcomeController {
+public class Welcome {
     @FXML
     public Label welcomeText;
 
@@ -14,6 +14,6 @@ public class WelcomeController {
     protected void onWelcomeButtonClick() throws IOException {
         // Change scene from welcome to game
         Stage stage = (Stage) welcomeText.getScene().getWindow();
-        new GameScene(stage);
+        new Game(stage);
     }
 }

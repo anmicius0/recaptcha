@@ -6,14 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.Random;
 
-public class GameScene {
+public class Game {
 
     private final Random rand = new Random();
     private final EventHandler<MouseEvent> mouseClickedHandler;
@@ -23,9 +23,9 @@ public class GameScene {
     private int ans = -1;
     private String color = "", colorAns = "";
     @FXML
-    private Button buttons[][] = new Button[1][1];
+    private Button[][] buttons = new Button[1][1];
 
-    public GameScene(Stage stage) throws IOException {
+    public Game(Stage stage) throws IOException {
         // Load game scene.
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), stage.getWidth(), stage.getHeight());
@@ -37,8 +37,13 @@ public class GameScene {
             int id = Integer.parseInt(b.getId().substring(7));
             if (id == ans)
                 nextLevel();
-            else
-                dead();
+            else {
+                try {
+                    dead();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         };
         // TODO: I think scoreLabel could be simplified.
         scoreLabel = (Label) root.getChildren().get(0);
@@ -96,7 +101,7 @@ public class GameScene {
         System.gc();
     }
 
-    public void dead() {
-        // TODO: Implement game over condition.
+    public void dead() throws IOException {
+        new Endgame(score);
     }
 }
