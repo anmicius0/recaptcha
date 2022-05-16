@@ -74,7 +74,7 @@ public class GameScene {
         ans = rand.nextInt(buttons.length * buttons.length);
         genColor();
 
-        int size = 1000 / buttons.length - 5;
+        int size = (int) (root.getHeight() * 0.7 / buttons.length);
         for (int i = 0; i < buttons.length; i++)
             for (int j = 0; j < buttons.length; j++) {
                 buttons[i][j] = new Button();
