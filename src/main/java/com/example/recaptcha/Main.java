@@ -10,7 +10,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        // TODO: Fix utility class warning
         new SceneSwitcher(stage);
     }
 }
