@@ -24,7 +24,7 @@ public class Answer {
 
         // Set properties
         int height = (int) Math.max(root.getHeight(), 769);
-        int width = (int) Math.max(root.getWidth(), 769);
+        int width = (int) Math.max(root.getWidth(), 1440);
         int size = (int) (height * 0.8 / buttons.length - 5);
         getColor(score);
 
