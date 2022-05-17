@@ -1,54 +1,37 @@
 package com.example.recaptcha;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class Game {
+public class Game implements Initializable {
 
     private final Random rand = new Random();
-    private final EventHandler<MouseEvent> mouseClickedHandler;
-    private final AnchorPane root;
-    private final Label scoreLabel;
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private Label scoreLabel;
     private int score = -1;
     private int ans = -1;
     private String color = "", colorAns = "";
     @FXML
     private Button[][] buttons = new Button[1][1];
 
-    public Game(Stage stage) throws IOException {
-        // Load game scene.
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), stage.getWidth(), stage.getHeight());
-
-        // Initialize objects.
-        root = (AnchorPane) scene.getRoot();
-        mouseClickedHandler = event -> {
-            Button b = (Button) event.getSource();
-            int id = Integer.parseInt(b.getId().substring(7));
-            if (id == ans)
-                nextLevel();
-            else {
-                try {
-                    dead();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        };
-        // TODO: I think scoreLabel could be simplified.
-        scoreLabel = (Label) root.getChildren().get(0);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         nextLevel();
-        stage.setScene(scene);
+    }
+
+    public void firstThing() {
+        nextLevel();
+        nextLevel();
     }
 
     private void genColor() {
@@ -69,10 +52,9 @@ public class Game {
             }
         }
 
+
         // Generate new board.
-        if (buttons.length >= 22)
-            buttons = new Button[buttons.length][buttons.length];
-        else {
+        if (buttons.length < 22) {
             buttons = new Button[buttons.length + 1][buttons.length + 1];
         }
         ans = rand.nextInt(buttons.length * buttons.length);
@@ -87,7 +69,15 @@ public class Game {
                 buttons[i][j].setLayoutY((size + 5) * i + root.getHeight() * 0.1);
                 buttons[i][j].setText(null);
                 buttons[i][j].setId("button_" + (i * buttons.length + j));
-                buttons[i][j].setOnMouseClicked(mouseClickedHandler);
+                buttons[i][j].setOnMouseClicked(event -> {
+                    Button b = (Button) event.getSource();
+                    int id = Integer.parseInt(b.getId().substring(7));
+                    if (id == ans)
+                        nextLevel();
+                    else {
+                        dead();
+                    }
+                });
 
                 // Set color
                 if (i * buttons.length + j == ans) {
@@ -101,7 +91,11 @@ public class Game {
         System.gc();
     }
 
-    public void dead() throws IOException {
-        new Endgame(score);
+    public void dead() {
+        try {
+            SceneSwitcher.switchScene("end");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
