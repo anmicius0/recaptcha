@@ -29,11 +29,6 @@ public class Game implements Initializable {
         nextLevel();
     }
 
-    public void firstThing() {
-        nextLevel();
-        nextLevel();
-    }
-
     private void genColor() {
         int r = rand.nextInt(256), g = rand.nextInt(256), b = rand.nextInt(256),
                 range = (int) ((r + g + b > 127 * 3 ? 64 : -64) / Math.log(score + Math.E));
@@ -60,7 +55,7 @@ public class Game implements Initializable {
         ans = rand.nextInt(buttons.length * buttons.length);
         genColor();
 
-        int size = (int) (root.getHeight() * 0.8 / buttons.length - 5);
+        int size = (int) (Math.max(root.getHeight(), 769) * 0.8 / buttons.length - 5);
         for (int i = 0; i < buttons.length; i++)
             for (int j = 0; j < buttons.length; j++) {
                 buttons[i][j] = new Button();
