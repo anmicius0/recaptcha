@@ -34,7 +34,7 @@ public class Game implements Initializable {
         cleanup();
 
         // Generate new board.
-        buttons = Answer.newBoard(buttons, score, root);
+        buttons = Answer.newBoard(buttons, score);
 
         // Mount buttons to root (and add listener).
         // I hope listener could move to Answer class.

@@ -1,7 +1,7 @@
 package com.example.recaptcha;
 
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ public class Answer {
 
     public static int ans = -1;
 
-    public static Button[][] newBoard(Button[][] buttons, int score, AnchorPane root) {
+    public static Button[][] newBoard(Button[][] buttons, int score) {
         // This method updates buttons
 
         // Update buttons
@@ -23,8 +23,8 @@ public class Answer {
         ans = rand.nextInt(buttons.length * buttons.length);
 
         // Set properties
-        int height = (int) Math.max(root.getHeight(), 769);
-        int width = (int) Math.max(root.getWidth(), 1440);
+        int height = (int) Screen.getPrimary().getVisualBounds().getHeight();
+        int width = (int) Screen.getPrimary().getVisualBounds().getWidth();
         int size = (int) (height * 0.8 / buttons.length - 5);
         getColor(score);
 
