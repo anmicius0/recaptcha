@@ -8,19 +8,15 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Game implements Initializable {
 
-    private final Random rand = new Random();
     @FXML
     private AnchorPane root;
     @FXML
     private Label scoreLabel;
     private int score = -1;
-    private int ans = -1;
-    private String color = "", colorAns = "";
     @FXML
     private Button[][] buttons = new Button[1][1];
 
@@ -29,61 +25,40 @@ public class Game implements Initializable {
         nextLevel();
     }
 
-    private void genColor() {
-        int r = rand.nextInt(256), g = rand.nextInt(256), b = rand.nextInt(256),
-                range = (int) ((r + g + b > 127 * 3 ? 64 : -64) / Math.log(score + Math.E));
-        color = "rgb(" + r + "," + g + "," + b + ");";
-        colorAns = "rgb(" + (r + range) + "," + (g + range) + "," + (b + range) + ");";
-    }
 
     public void nextLevel() {
         // Update score.
         scoreLabel.setText("Score：%3d".formatted(++score));
 
         // Clean up previous board.
-        for (Button[] button : buttons) {
-            for (int j = 0; j < buttons.length; j++) {
-                root.getChildren().remove(button[j]);
-            }
-        }
-
+        cleanup();
 
         // Generate new board.
-        if (buttons.length < 22) {
-            buttons = new Button[buttons.length + 1][buttons.length + 1];
-        }
-        ans = rand.nextInt(buttons.length * buttons.length);
-        genColor();
+        buttons = Answer.newBoard(buttons, score, root);
 
-        int size = (int) (Math.max(root.getHeight(), 769) * 0.8 / buttons.length - 5);
-        for (int i = 0; i < buttons.length; i++)
-            for (int j = 0; j < buttons.length; j++) {
-                buttons[i][j] = new Button();
-                buttons[i][j].setPrefSize(size, size);
-                buttons[i][j].setLayoutX((size + 5) * j + (root.getWidth() - root.getHeight()) * 0.5 + root.getHeight() * 0.1);
-                buttons[i][j].setLayoutY((size + 5) * i + root.getHeight() * 0.1);
-                buttons[i][j].setText(null);
-                buttons[i][j].setId("button_" + (i * buttons.length + j));
-                buttons[i][j].setOnMouseClicked(event -> {
-                    Button b = (Button) event.getSource();
-                    int id = Integer.parseInt(b.getId().substring(7));
-                    if (id == ans)
-                        nextLevel();
-                    else {
-                        dead();
-                    }
-                });
-
-                // Set color
-                if (i * buttons.length + j == ans) {
-                    buttons[i][j].setStyle("-fx-background-color:%s;".formatted(colorAns));
+        // Mount buttons to root (and add listener).
+        // I hope listener could move to Answer class.
+        for (int i = 0; i < Math.pow(buttons.length, 2); i++) {
+            buttons[i / buttons.length][i % buttons.length].setOnMouseClicked(event -> {
+                Button b = (Button) event.getSource();
+                int id = Integer.parseInt(b.getId().substring(7));
+                if (id == Answer.ans) {
+                    nextLevel();
                 } else {
-                    buttons[i][j].setStyle("-fx-background-color:%s;".formatted(color));
+                    dead();
                 }
+            });
+            root.getChildren().add(buttons[i / buttons.length][i % buttons.length]);
+        }
 
-                root.getChildren().add(buttons[i][j]);
-            }
         System.gc();
+    }
+
+    private void cleanup() {
+        // Clean up previous board.
+        for (int i = 0; i < Math.pow(buttons.length, 2); i++) {
+            root.getChildren().remove(buttons[i / buttons.length][i % buttons.length]);
+        }
     }
 
     public void dead() {
