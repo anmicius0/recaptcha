@@ -1,0 +1,23 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.button{
+   -fx-background-radius:10em;
+   -fx-background-color:"darkorange";
+   -fx-font-weight:BOLD;
+   -fx-font-size:25;
+   -fx-font-family:"Comic Sans MS";
+   -fx-font-style:oblique;
+}
+
+.root{
+   -fx-background-color:"lemonchiffon";
+}
+
+#text_recaptcha{
+   -fx-font-family:"Comic Sans MS";
+   -fx-font-weight:BOLD;
+   -fx-font-size:84;
+}
+
+
+

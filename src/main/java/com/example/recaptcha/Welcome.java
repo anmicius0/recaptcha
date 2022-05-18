@@ -18,4 +18,14 @@ public class Welcome {
             throw new RuntimeException(e);
         }
     }
+    
+    @FXML
+    protected void RuleButtonClink() {
+    	 // Change scene from welcome to rule
+        try {
+            SceneSwitcher.switchScene("rule");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

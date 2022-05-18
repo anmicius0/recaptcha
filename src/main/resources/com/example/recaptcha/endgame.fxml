@@ -3,10 +3,46 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recaptcha.Endgame">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recaptcha.Endgame">
    <children>
-      <Label fx:id="scoreLabel" layoutX="297.0" layoutY="165.0" text="Label" />
-      <Button fx:id="playAgain" layoutX="273.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onPlayAgainButtonClick" text="Play Again" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <Button layoutX="827.0" layoutY="477.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onPlayAgainButtonClick" prefHeight="30.0" prefWidth="80.0" text="Play again" />
+            <Label fx:id="gameover" layoutX="199.0" layoutY="146.0" prefHeight="123.0" prefWidth="561.0" text="Game Over!">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreLabel" layoutX="406.0" layoutY="269.0" prefHeight="32.0" prefWidth="147.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8fff85" height="100.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeb87" height="100.0" layoutY="342.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#87ffd8" height="100.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c587ff" height="100.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffdb87" height="100.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ceff87" height="55.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdff87" height="100.0" layoutX="100.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff8d87" height="100.0" layoutX="199.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a587ff" height="100.0" layoutX="299.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff87f8" height="100.0" layoutX="399.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#87bbff" height="100.0" layoutX="499.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#96ff87" height="100.0" layoutX="505.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff987" height="100.0" layoutX="605.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff8787" height="100.0" layoutX="705.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b087ff" height="100.0" layoutX="805.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff87d4" height="100.0" layoutX="905.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="55.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd087" height="100.0" layoutX="860.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#87d2ff" height="100.0" layoutX="860.0" layoutY="201.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#87ffef" height="100.0" layoutX="860.0" layoutY="301.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbcbb" height="100.0" layoutX="405.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="305.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -2,14 +2,69 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="20.0"
-      fx:controller="com.example.recaptcha.Welcome">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onMouseClicked="#onWelcomeButtonClick"/>
-</VBox>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recaptcha.Welcome">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcdec2" height="75.0" layoutX="519.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2fcd9" height="200.0" layoutX="231.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+            <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="#8dff98" height="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="66.0" />
+            <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="#faff7a" height="88.0" layoutX="56.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="88.0" />
+            <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="#77bcfd" height="100.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="#ff9494" height="110.0" layoutX="-1.0" layoutY="430.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="110.0" />
+            <Rectangle fx:id="rec5" arcHeight="5.0" arcWidth="5.0" fill="#f59adb" height="65.0" layoutX="68.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="65.0" />
+            <Rectangle fx:id="rec6" arcHeight="5.0" arcWidth="5.0" fill="#ffe5c9" height="200.0" layoutX="760.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+            <Rectangle fx:id="rec7" arcHeight="5.0" arcWidth="5.0" fill="#dcffc9" height="50.0" layoutX="809.0" layoutY="491.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle fx:id="rec8" arcHeight="5.0" arcWidth="5.0" fill="#f2e7b6" height="100.0" layoutX="507.0" layoutY="441.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dafcc2" height="50.0" layoutX="144.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <VBox alignment="CENTER" layoutX="180.0" layoutY="150.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="239.0" prefWidth="600.0">
+               <children>
+                  <Text id="text_recaptcha" fx:id="text_recaptcha" fill="#ff9500" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="0.5" text="Recaptcha!" textAlignment="CENTER" wrappingWidth="534.3912963867188">
+                     <font>
+                        <Font size="69.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onWelcomeButtonClick" prefHeight="50.0" prefWidth="200.0" text="Start">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#RuleButtonClink" prefHeight="50.0" prefWidth="200.0" text="Rule">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9fcc2" height="75.0" layoutX="641.0" layoutY="342.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3fc" height="80.0" layoutX="598.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafcc2" height="50.0" layoutX="280.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcc2c2" height="30.0" layoutX="370.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="30.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcc2ca" height="80.0" layoutX="55.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a9bbfd" height="50.0" layoutX="155.0" layoutY="405.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7c2fc" height="100.0" layoutX="860.0" layoutY="441.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2edfc" height="50.0" layoutX="15.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#89f5a6" height="125.0" layoutX="700.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="125.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f1fa" height="50.0" layoutX="385.0" layoutY="441.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

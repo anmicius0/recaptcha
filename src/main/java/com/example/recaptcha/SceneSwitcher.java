@@ -21,6 +21,14 @@ public class SceneSwitcher {
             loader = new FXMLLoader(Main.class.getResource("endgame.fxml"));
             scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
         }
+        if (sceneName.equals("rule")) {
+            loader = new FXMLLoader(Main.class.getResource("Rule.fxml"));
+            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+        }
+        if (sceneName.equals("welcome")) {
+            loader = new FXMLLoader(Main.class.getResource("welcome.fxml"));
+            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+        }
 
         stage.setScene(scene);
     }

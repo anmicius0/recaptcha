@@ -1,0 +1,26 @@
+
+.button{
+   -fx-background-radius:5em;
+   -fx-background-color:"darkorange";
+   -fx-font-weight:BOLD;
+   -fx-font-size:12;
+   -fx-font-family:"Comic Sans MS";
+   -fx-font-style:oblique;
+}
+
+.root{
+   -fx-background-color:"lemonchiffon";
+}
+
+#gameover{
+   -fx-font-family:"Comic Sans MS";
+   -fx-text-fill:"crimson";
+}
+
+#score{
+   -fx-font-family:"Comic Sans MS";
+}
+
+#number{
+   -fx-font-family:"Comic Sans MS";
+}
