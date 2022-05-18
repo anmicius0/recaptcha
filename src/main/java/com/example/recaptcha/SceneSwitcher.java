@@ -19,7 +19,6 @@ public class SceneSwitcher {
         }
         if (sceneName.equals("end")) {
             loader = new FXMLLoader(Main.class.getResource("endgame.fxml"));
-            Endgame.setScore(100);
             scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
         }
 

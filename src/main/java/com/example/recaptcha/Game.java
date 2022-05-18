@@ -12,11 +12,11 @@ import java.util.ResourceBundle;
 
 public class Game implements Initializable {
 
+    public static int score = -1;
     @FXML
     private AnchorPane root;
     @FXML
     private Label scoreLabel;
-    private int score = -1;
     @FXML
     private Button[][] buttons = new Button[1][1];
 
