@@ -34,12 +34,6 @@ public class SceneSwitcher {
             scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
             scene.getStylesheets().add(Main.class.getResource("welcome.css").toExternalForm());
 
-            //this is bgm
-            String music = Main.class.getClassLoader().getResource("BGM.mp3").toExternalForm();
-            Media media = new Media(music);
-            MediaPlayer mediaplayer = new MediaPlayer(media);
-            mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
-            mediaplayer.play();
         }
 
         stage.setScene(scene);
