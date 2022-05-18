@@ -13,19 +13,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-    	
-    	//this is icon and title
-		Image icon = new Image("file:src/main/resources/com/example/recaptcha/icon.png");
-		stage.getIcons().add(icon);
-		stage.setTitle("Recaptcha game");
-		
-		//this is bgm	
-		String music = this.getClass().getClassLoader().getResource("backgroundmusic.mp3").toExternalForm();
-		Media media = new Media(music);
-		MediaPlayer mediaplayer = new MediaPlayer(media);
-		mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaplayer.play();
-		
+
+        //this is icon and title
+        Image icon = new Image("file:src/main/resources/com/example/recaptcha/icon.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Recaptcha game");
+
+        //this is bgm
+        String music = this.getClass().getClassLoader().getResource("BGM.mp3").toExternalForm();
+        Media media = new Media(music);
+        MediaPlayer mediaplayer = new MediaPlayer(media);
+        mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaplayer.play();
+
         SceneSwitcher.setStage(stage);
     }
 }
