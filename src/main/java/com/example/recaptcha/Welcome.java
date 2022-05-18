@@ -8,10 +8,14 @@ import java.io.IOException;
 public class Welcome {
     @FXML
     public Label welcomeText;
-    
+
     @FXML
-    protected void onWelcomeButtonClick() throws IOException {
+    protected void onWelcomeButtonClick() {
         // Change scene from welcome to game
-        SceneSwitcher.switchScene("game");
+        try {
+            SceneSwitcher.switchScene("game");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
