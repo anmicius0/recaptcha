@@ -10,6 +10,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        new SceneSwitcher(stage);
+        SceneSwitcher.setStage(stage);
     }
 }

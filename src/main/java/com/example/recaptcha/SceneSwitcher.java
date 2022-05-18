@@ -11,8 +11,23 @@ public class SceneSwitcher {
     private static FXMLLoader loader;
     private static Scene scene;
 
+    public static void switchScene(String sceneName) throws IOException {
+        // Decide scene
+        if (sceneName.equals("game")) {
+            loader = new FXMLLoader(Main.class.getResource("game.fxml"));
+            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+        }
+        if (sceneName.equals("end")) {
+            loader = new FXMLLoader(Main.class.getResource("endgame.fxml"));
+            Endgame.setScore(100);
+            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+        }
+
+        stage.setScene(scene);
+    }
+
     // Initialize the stage and show welcome screen
-    public SceneSwitcher(Stage stage) {
+    public static void setStage(Stage stage) {
         // Set stage
         SceneSwitcher.stage = stage;
         stage.setMaximized(true);
@@ -26,19 +41,5 @@ public class SceneSwitcher {
         }
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void switchScene(String sceneName) throws IOException {
-        // Decide scene
-        if (sceneName.equals("game")) {
-            loader = new FXMLLoader(Main.class.getResource("game.fxml"));
-            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
-        }
-        if (sceneName.equals("end")) {
-            loader = new FXMLLoader(Main.class.getResource("endgame.fxml"));
-            scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
-        }
-
-        stage.setScene(scene);
     }
 }
