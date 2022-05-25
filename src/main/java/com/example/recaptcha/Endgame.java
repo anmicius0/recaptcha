@@ -25,6 +25,6 @@ public class Endgame implements Initializable {
     protected void onPlayAgainButtonClick() throws IOException {
         // Change scene from welcome to game
         Game.score = -1;
-        SceneSwitcher.switchScene("welcome");
+        SceneSwitcher.switchScene("game");
     }
 }
