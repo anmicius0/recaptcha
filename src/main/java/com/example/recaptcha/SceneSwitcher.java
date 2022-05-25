@@ -46,7 +46,8 @@ public class SceneSwitcher {
     public static void setStage(Stage stage) {
         // Set stage
         SceneSwitcher.stage = stage;
-        stage.setMaximized(true);
+        stage.setX(960);
+        stage.setY(540);
 
         // Load welcome scene
         loader = new FXMLLoader(SceneSwitcher.class.getResource("welcome.fxml"));

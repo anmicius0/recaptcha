@@ -1,7 +1,6 @@
 package com.example.recaptcha;
 
 import javafx.scene.control.Button;
-import javafx.stage.Screen;
 
 import java.util.Random;
 
@@ -23,8 +22,8 @@ public class Answer {
         ans = rand.nextInt(buttons.length * buttons.length);
 
         // Set properties
-        int height = (int) Screen.getPrimary().getVisualBounds().getHeight();
-        int width = (int) Screen.getPrimary().getVisualBounds().getWidth();
+        int height = 540;
+        int width = 960;
         int size = (int) (height * 0.8 / buttons.length - 5);
         getColor(score);
 
@@ -34,7 +33,7 @@ public class Answer {
                 // Size and position
                 newButton.setPrefSize(size, size);
                 newButton.setLayoutX((size + 5) * j + (width - height) * 0.5 + height * 0.1);
-                newButton.setLayoutY((size + 5) * i + height * 0.1);
+                newButton.setLayoutY((size + 5) * i + height * 0.2);
                 newButton.setText(null);
                 newButton.setId("button_" + (i * buttons.length + j));
 
