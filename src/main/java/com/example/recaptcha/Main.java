@@ -2,8 +2,6 @@ package com.example.recaptcha;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,8 +16,7 @@ public class Main extends Application {
         Image icon = new Image("file:src/main/resources/com/example/recaptcha/icon.png");
         stage.getIcons().add(icon);
         stage.setTitle("Recaptcha game");
-
-
+        
         SceneSwitcher.setStage(stage);
     }
 }
