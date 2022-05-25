@@ -17,21 +17,21 @@ public class SceneSwitcher {
             // Decide scene
             if (sceneName.equals("game")) {
                 loader = new FXMLLoader(Main.class.getResource("game.fxml"));
-                scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+                scene = new Scene(loader.load());
             }
             if (sceneName.equals("end")) {
                 loader = new FXMLLoader(Main.class.getResource("endgame.fxml"));
-                scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+                scene = new Scene(loader.load());
                 scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("endgame.css")).toExternalForm());
             }
             if (sceneName.equals("rule")) {
                 loader = new FXMLLoader(Main.class.getResource("Rule.fxml"));
-                scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+                scene = new Scene(loader.load());
                 scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("rule.css")).toExternalForm());
             }
             if (sceneName.equals("welcome")) {
                 loader = new FXMLLoader(Main.class.getResource("welcome.fxml"));
-                scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+                scene = new Scene(loader.load());
                 scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("welcome.css")).toExternalForm());
 
             }
@@ -46,8 +46,6 @@ public class SceneSwitcher {
     public static void setStage(Stage stage) {
         // Set stage
         SceneSwitcher.stage = stage;
-        stage.setX(960);
-        stage.setY(540);
 
         // Load welcome scene
         loader = new FXMLLoader(SceneSwitcher.class.getResource("welcome.fxml"));
