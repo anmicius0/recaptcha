@@ -14,7 +14,7 @@ public class Answer {
         // This method updates buttons
 
         // Update buttons
-        if (buttons.length < 21) {
+        if (buttons.length < 16) {
             buttons = new Button[buttons.length + 1][buttons.length + 1];
         }
 
