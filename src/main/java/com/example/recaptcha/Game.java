@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,10 +61,6 @@ public class Game implements Initializable {
     }
 
     public void dead() {
-        try {
-            SceneSwitcher.switchScene("end");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        SceneSwitcher.switchScene("end");
     }
 }
